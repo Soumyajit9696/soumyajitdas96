@@ -29,6 +29,3 @@ If you're interested in contributing to my academic portfolio, whether it's shar
 - I would like to express my gratitude to [GitHub Pages](https://pages.github.com/) for hosting this academic portfolio and facilitating knowledge sharing.
 - This site is built using HTML, CSS, and JavaScript, reflecting my commitment to both scientific rigor and creative expression in web development.
 
----
-
-Feel free to personalize this README to highlight your specific research areas, academic achievements, and scientific aspirations. Best wishes on your academic journey in the fascinating world of physics!
