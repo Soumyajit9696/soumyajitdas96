@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOUMYAJIT DAS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image:linear-gradient(#000000, #130F40);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: #111;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 15px;
+            border-radius: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #ff6347;
+            color: #fff;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger div {
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 5px;
+            transition: all 0.3s linear;
+            position: relative;
+        }
+        /* CSS to turn the hamburger icon into a cross when active */
+.hamburger.active div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active div:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+        .navbar.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #111;
+        }
+
+        .navbar.active a {
+            margin: 15px 0;
+            font-size: 1.5rem;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px 20px;
+            /*background-color: #030213;*/
+           /* background-color: #130f40;
+background-image: linear-gradient(315deg, #130f40 0%, #000000 74%);*/
+background: rgb(1,0,15);
+background: linear-gradient(90deg, rgb(0, 1, 4) 0%, rgb(2, 11, 62) 49%, rgb(36, 1, 1) 100%);
+            color: #fff;
+            height: 500px;
+        }
+
+        .text-content {
+            text-align: left;
+            max-width: 600px;
+            margin-left: 250px;
+        }
+
+        .text-content h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .text-content h3 {
+            font-size: 1.5rem;
+            color: #f97b28;
+            margin-bottom: 20px;
+        }
+
+        .text-content h5 {
+            font-size: 1rem;
+            color: #bbb;
+        }
+
+        .profile-img {
+            height: 600px;
+            overflow: hidden;
+            /*box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);*/
+            margin-right: 50px;
+        }
+
+        .profile-img img {
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .marquee {
+            background-color: #111;
+            padding: 10px 0;
+            margin: 0;
+        }
+
+        .marquee p {
+            font-size: 1rem;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .marquee p {
+            animation: marquee 15s linear infinite;
+        }
+
+        .section {
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            margin: 20px 0;
+            border-radius: 20px;
+            max-width: 1200px;
+            margin: 40px auto;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-10px);
+        }
+
+        .section:nth-child(odd) {
+            background: linear-gradient(135deg, #333, #555);
+        }
+
+        .section:nth-child(even) {
+            background: linear-gradient(135deg, #444, #666);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            color: #ff6347;
+        }
+
+        .section-content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #ddd;
+        }
+
+        .section-content div {
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            color: #aaa;
+        }
+
+        .custom-cursor {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 2px solid #fff;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.15s ease, width 0.15s ease, height 0.15s ease;
+            z-index: 9999;
+        }
+
+        .custom-cursor.enlarge {
+            width: 60px;
+            height: 60px;
+        }
+
+        .custom-cursor.enlarge-more {
+            width: 90px;
+            height: 90px;
+        }
+
+        .custom-cursor .inner-circle {
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column-reverse;
+                height: auto;
+                padding: 20px;
+            }
+
+            .text-content {
+                text-align: center;
+                margin-left: 0;
+                margin-bottom: 20px;
+            }
+
+            .profile-img {
+                margin-right: 0;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .profile-img img {
+                width: 100%;
+                height: auto;
+            }
+
+            .text-content h1 {
+                font-size: 2rem;
+            }
+
+            .text-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .text-content h5 {
+                font-size: 1rem;
+            }
+
+            .navbar {
+                display: none;
+                flex-direction: column;
+            }
+
+            .hamburger {
+                display: flex;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="custom-cursor" id="customCursor">
+        <div class="inner-circle"></div>
+    </div>
+
+    <button class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+    </button>
+    <div class="navbar" id="navbar">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#work">Work</a>
+        <a href="#award">Award</a>
+        <a href="#education">Education</a>
+        <a href="#skill">Skill</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <div class="container">
+        <div class="text-content">
+            <h1>SOUMYAJIT DAS</h1>
+            <h3>Programmer</h3>
+            <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
+        </div>
+        <div class="profile-img">
+            <img src="/AZW.png" alt="Profile Image">
+        </div>
+    </div>
+
+    <div class="marquee">
+        <p id="marqueeText">Welcome to Soumyajit Das's Portfolio Website - Current Date and Time: </p>
+    </div>
+
+    <div class="section" id="about" data-aos="fade-right">
+        <div class="section-title"><i class="fas fa-user"></i> About</div>
+        <div class="section-content">
+            <div>Detail 1 about me...</div>
+            <div>Detail 2 about me...</div>
+            <div>Detail 3 about me...</div>
+        </div>
+    </div>
+
+    <div class="section" id="experience" data-aos="fade-left">
+        <div class="section-title"><i class="fas fa-briefcase"></i> Experience</div>
+        <div class="section-content">
+            <div>Job 1 experience...</div>
+            <div>Job 2 experience...</div>
+            <div>Job 3 experience...</div>
+        </div>
+    </div>
+
+    <div class="section" id="work" data-aos="fade-right">
+        <div class="section-title"><i class="fas fa-project-diagram"></i> Work</div>
+        <div class="section-content">
+            <div>Work project 1...</div>
+            <div>Work project 2...</div>
+            <div>Work project 3...</div>
+        </div>
+    </div>
+
+    <div class="section" id="award" data-aos="fade-left">
+        <div class="section-title"><i class="fas fa-trophy"></i> Award</div>
+        <div class="section-content">
+            <div>Award 1...</div>
+            <div>Award 2...</div>
+            <div>Award 3...</div>
+        </div>
+    </div>
+
+    <div class="section" id="education" data-aos="fade-right">
+        <div class="section-title"><i class="fas fa-graduation-cap"></i> Education</div>
+        <div class="section-content">
+            <div>Education 1...</div>
+            <div>Education 2...</div>
+            <div>Education 3...</div>
+        </div>
+    </div>
+
+    <div class="section" id="skill" data-aos="fade-left">
+        <div class="section-title"><i class="fas fa-tools"></i> Skill</div>
+        <div class="section-content">
+            <div>Skill 1...</div>
+            <div>Skill 2...</div>
+            <div>Skill 3...</div>
+        </div>
+    </div>
+
+    <div class="section" id="contact" data-aos="fade-right">
+        <div class="section-title"><i class="fas fa-envelope"></i> Contact</div>
+        <div class="section-content">
+            <div>Contact detail 1...</div>
+            <div>Contact detail 2...</div>
+            <div>Contact detail 3...</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2024 Soumyajit Das. All rights reserved.
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+       document.addEventListener('DOMContentLoaded', () => {
+    AOS.init();
+
+    const customCursor = document.getElementById('customCursor');
+    document.addEventListener('mousemove', (e) => {
+        customCursor.style.left = `${e.clientX}px`;
+        customCursor.style.top = `${e.clientY}px`;
+    });
+
+    const interactiveElements = document.querySelectorAll('a, h1, h3, h5, .profile-img img, .section-title, .section-content div');
+
+    interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            customCursor.classList.add('enlarge');
+            if (element.tagName === 'H1' || element.tagName === 'H3' || element.tagName === 'H5' || element.classList.contains('profile-img')) {
+                customCursor.classList.add('enlarge-more');
+            }
+        });
+        element.addEventListener('mouseleave', () => {
+            customCursor.classList.remove('enlarge');
+            customCursor.classList.remove('enlarge-more');
+        });
+
+        element.addEventListener('touchstart', () => {
+            customCursor.classList.add('enlarge');
+            if (element.tagName === 'H1' || element.tagName === 'H3' || element.tagName === 'H5' || element.classList.contains('profile-img')) {
+                customCursor.classList.add('enlarge-more');
+            }
+        });
+        element.addEventListener('touchend', () => {
+            customCursor.classList.remove('enlarge');
+            customCursor.classList.remove('enlarge-more');
+        });
+    });
+
+    const updateMarqueeText = () => {
+        const marqueeText = document.getElementById('marqueeText');
+        const now = new Date();
+        const formattedDateTime = now.toLocaleString();
+        marqueeText.textContent = `Welcome to Soumyajit Das's Portfolio Website - Current Date and Time: ${formattedDateTime}`;
+    };
+
+    setInterval(updateMarqueeText, 1000);
+
+    const hamburger = document.getElementById('hamburger');
+    const navbar = document.getElementById('navbar');
+    hamburger.addEventListener('click', () => {
+        navbar.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    });
+
+    // Close menu after clicking on a menu item
+    const navLinks = document.querySelectorAll('.navbar a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navbar.classList.remove('active');
+            hamburger.classList.remove('active');
+        });
+    });
+});
+
+    </script>
+</body>
+</html>
