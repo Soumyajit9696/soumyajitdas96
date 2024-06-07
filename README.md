@@ -1,6 +1,3 @@
-Of course! Here's a revised README file tailored for your academic portfolio as a Physics Honours student:
-
----
 
 # Soumyajit Das - Academic Portfolio
 
